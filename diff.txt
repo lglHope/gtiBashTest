@@ -1,0 +1,107 @@
+要查看尚未暂存的文件更新了哪些部分，不加参数直接输入 git diff
+若要查看已暂存的将要添加到下次提交里的内容，可以用 git diff --staged 命令。 这条命令将比对已暂存文件与最后一次提交的文件差异：
+
+diff对比的对象都是上一版本，比如：
+git diff 比较的是尚未暂存的文件和已经暂存的文件，前一版本
+git diff --staged 比较的是已经暂存的文件和未修改前的文件，前一版本
+
+
+Hope@Hope-PC MINGW64 ~/Desktop/gitTestDir/gtiBashTest (master)
+$ git status -s
+A  README.md
+AM gitignore.txt
+MM ss.json
+
+Hope@Hope-PC MINGW64 ~/Desktop/gitTestDir/gtiBashTest (master)
+$ git diff
+warning: LF will be replaced by CRLF in gitignore.txt.
+The file will have its original line endings in your working directory
+diff --git a/gitignore.txt b/gitignore.txt
+index b68e795..bab381d 100644
+--- a/gitignore.txt
++++ b/gitignore.txt
+@@ -9,3 +9,21 @@
+ 匹配模式可以以（/）结尾指定目录。
+
+ 要忽略指定模式以外的文件或目录，可以在模式前加上叹号（!）取反。
++
++# 忽略所有的 .a 文件
++*.a
++
++# 但跟踪所有的 lib.a，即便你在前面忽略了 .a 文件
++!lib.a
++
++# 只忽略当前目录下的 TODO 文件，而不忽略 subdir/TODO
++/TODO
++
++# 忽略任何目录下名为 build 的文件夹
++build/
++
++# 忽略 doc/notes.txt，但不忽略 doc/server/arch.txt
++doc/*.txt
++
++# 忽略 doc/ 目录及其所有子目录下的 .pdf 文件
++doc/**/*.pdf
+diff --git a/ss.json b/ss.json
+index 48ecbf2..3bde631 100644
+--- a/ss.json
++++ b/ss.json
+@@ -3,7 +3,7 @@
+     "server_port":"38291",
+     "local_address":"127.0.0.1",
+     "local_port":"38291",
+-    "password":"11111",
++    "password":"11112",
+     "timeout":300,
+     "method":"aes-256-cfb",
+     "fast_open":false
+
+Hope@Hope-PC MINGW64 ~/Desktop/gitTestDir/gtiBashTest (master)
+$ git diff --staged
+diff --git a/README.md b/README.md
+new file mode 100644
+index 0000000..e3d3ebb
+--- /dev/null
++++ b/README.md
+@@ -0,0 +1 @@
++chenzebinshabi  xiaochen
+diff --git a/gitignore.txt b/gitignore.txt
+new file mode 100644
+index 0000000..b68e795
+--- /dev/null
++++ b/gitignore.txt
+@@ -0,0 +1,11 @@
++文件 .gitignore 的格式规范如下：
++
++所有空行或者以 # 开头的行都会被 Git 忽略。
++
++可以使用标准的 glob 模式匹配，它会递归地应用在整个工作区中。
++
++匹配模式可以以（/）开头防止递归。
++
++匹配模式可以以（/）结尾指定目录。
++
++要忽略指定模式以外的文件或目录，可以在模式前加上叹号（!）取反。
+diff --git a/ss.json b/ss.json
+index 57bf194..48ecbf2 100644
+--- a/ss.json
++++ b/ss.json
+@@ -3,8 +3,8 @@
+     "server_port":"38291",
+     "local_address":"127.0.0.1",
+     "local_port":"38291",
+-    "password":"xuxunjian",
++    "password":"11111",
+     "timeout":300,
+     "method":"aes-256-cfb",
+     "fast_open":false
+-}
+\ No newline at end of file
++}
+
+Hope@Hope-PC MINGW64 ~/Desktop/gitTestDir/gtiBashTest (master)
+$ git status -s
+A  README.md
+AM gitignore.txt
+MM ss.json
+

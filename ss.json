@@ -3,7 +3,7 @@
     "server_port":"38291",  
     "local_address":"127.0.0.1", 
     "local_port":"38291",  
-    "password":"xuxunjian",  
+    "password":"11112",  
     "timeout":300,  
     "method":"aes-256-cfb",  
     "fast_open":false
