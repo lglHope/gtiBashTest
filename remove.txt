@@ -25,3 +25,28 @@ git rm 命令后面可以列出文件或者目录的名字，也可以使用 glo
 
  $ git rm \*~
 该命令会删除所有名字以 ~ 结尾的文件。
+
+
+rm 、git rm 、git rm --cached的区别
+rm
+
+删除文件
+
+git rm
+
+git rm
+当我们需要删除暂存区或分支上的文件, 同时工作区也不需要这个文件了, 可以使用git rm
+git rm file = rm file+ git add file
+rm file删除本地文件
+git add file 提交删除的步骤同步到git仓库
+
+git rm --cached file
+
+当我们需要删除暂存区或分支上的文件, 但本地又需要使用, 只是不希望这个文件被版本控制, 可以使用 git rm --cached
+git rm --cached 会从index里面删除该文件，下次commit的时候会修改git仓库，但是本地的文件还是保留
+
+Untrack and stop tracking files in git
+
+有一些文件我们不想提交到git上去了，但是又被检测到有变化，显示Untracked files，我们可以采用
+git rm --cached file来停止跟踪这些文件
+

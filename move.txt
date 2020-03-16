@@ -1,0 +1,9 @@
+git mv file_from file_to
+
+
+git mv README.md README
+其实，运行 git mv 就相当于运行了下面三条命令：
+
+$ mv README.md README
+$ git rm README.md
+$ git add README
