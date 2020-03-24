@@ -1,0 +1,39 @@
+在 Git 中列出已有的标签非常简单，只需要输入 git tag （可带上可选的 -l 选项 --list）
+
+附注标签
+在 Git 中创建附注标签十分简单。 最简单的方式是当你在运行 tag 命令时指定 -a 选项
+git tag -a v1.4 -m "my version 1.4"
+
+通过使用 git show 命令可以看到标签信息和与之对应的提交信息
+git show v1.4
+
+另一种给提交打标签的方式是使用轻量标签。 轻量标签本质上是将提交校验和存储到一个文件中——没有保存任何其他信息。 创建轻量标签，不需要使用 -a、-s 或 -m 选项，只需要提供标签名字：
+git tag v1.4-lw
+
+后期打标签
+你也可以对过去的提交打标签
+ git tag -a v1.2 9fceb02
+
+共享标签
+默认情况下，git push 命令并不会传送标签到远程仓库服务器上。 在创建完标签后你必须显式地推送标签到共享服务器上。 这个过程就像共享远程分支一样——你可以运行 git push origin <tagname>
+git push origin v1.5
+
+如果想要一次性推送很多标签，也可以使用带有 --tags 选项的 git push 命令。 这将会把所有不在远程仓库服务器上的标签全部传送到那里
+git push origin --tags
+
+删除标签
+要删除掉你本地仓库上的标签，可以使用命令 git tag -d <tagname>。 例如，可以使用以下命令删除一个轻量标签：
+git tag -d v1.4-lw
+
+删除标签
+要删除掉你本地仓库上的标签，可以使用命令 git tag -d <tagname>。 例如，可以使用以下命令删除一个轻量标签：
+git tag -d v1.4-lw
+
+上述命令并不会从任何远程仓库中移除这个标签，你必须用 git push <remote> :refs/tags/<tagname> 来更新你的远程仓库：
+第一种变体是 git push <remote> :refs/tags/<tagname> ：
+git push origin :refs/tags/v1.4-lw
+
+第二种更直观的删除远程标签的方式是：
+git push origin --delete <tagname>
+
+
