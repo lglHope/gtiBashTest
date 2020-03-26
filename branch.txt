@@ -1,0 +1,5 @@
+新建本地分支时与远程分支建立联系
+git checkout -b <name> <remote>/<name>
+
+本地分支与远程分支建立联系
+git branch -u <remote>/<name>
