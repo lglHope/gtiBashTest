@@ -1,0 +1,14 @@
+新建分支
+git branch <name>
+
+切换分支
+git checkout <name> 
+
+创建并切换分支
+git checkout -b <name>
+
+查看各个分支当前所指的对象。 提供这一功能的参数是 --decorate
+git log --oneline --decorate
+
+运行 git log --oneline --decorate --graph --all ，它会输出你的提交历史、各个分支的指向以及项目的分支分叉情况
+git log --oneline --decorate --graph --all
