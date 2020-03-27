@@ -19,3 +19,9 @@ git checkout -b <name> <remote>/<name>
 本地分支与远程分支建立联系
 git branch -u <remote>/<name>
 
+
+删除分支
+git branch -d <name>
+
+当分支还未合并时，会执行上面的语句会报错，这时可以使用-D强制删除
+git branch -D <name>
