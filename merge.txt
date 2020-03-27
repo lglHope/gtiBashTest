@@ -1,6 +1,6 @@
 查看已合并或者未合并到指定分支的分支,当后面的分支名为缺省时表示当前分支
-git checkout --merged <branch name>
-git checkout --no-mergrd <branch name>
+git branch --merged <branch name>
+git branch --no-mergrd <branch name>
 
 
 
